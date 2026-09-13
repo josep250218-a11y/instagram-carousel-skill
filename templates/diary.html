@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Diary · Template de carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="slide-css">
+  /* Copiar este bloque completo como "style" del spec. */
+  :root {
+    --bg: var(--brand-bg, #EEF2FF);
+    --paper: #FFFFFF;
+    --primary: var(--brand-primary, #4F46E5);
+    --dark: var(--brand-dark, #1E1B4B);
+    --text: var(--brand-text, #111827);
+    --text-dim: var(--brand-text-dim, #6B7280);
+    --rule: color-mix(in srgb, var(--dark) 10%, transparent);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .slide {
+    font-family: Outfit, sans-serif;
+    flex: 0 0 1080px;
+    width: 1080px;
+    height: 1350px;
+    background: var(--bg);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    padding: 88px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+  .top .left { display: flex; align-items: center; gap: 14px; }
+  .top .swatch {
+    width: 12px; height: 12px; background: var(--primary); border-radius: 50%;
+  }
+  .paper {
+    background: var(--paper);
+    border-radius: 24px;
+    padding: 80px 72px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--dark) 6%, transparent);
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 71px,
+      var(--rule) 71px,
+      var(--rule) 72px
+    );
+    background-position: 0 80px;
+  }
+  .paper-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 32px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--rule);
+  }
+  .paper-meta .date {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.04em;
+  }
+  .paper-meta .entry-num {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .entry {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .entry-title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 40px;
+  }
+  .entry-text {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .entry-text em {
+    font-style: italic;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .entry-text strong {
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .entry-large {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+  }
+  .entry-large em { font-style: italic; color: var(--primary); }
+  .signature {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: auto;
+    padding-top: 40px;
+    font-style: italic;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+  .footer .pages { color: var(--primary); font-weight: 700; }
+  .closing-text {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+  }
+  .closing-text em { font-style: italic; color: var(--primary); }
+  .closing-cta {
+    margin-top: 48px;
+    padding: 20px 28px;
+    background: var(--dark);
+    color: var(--bg);
+    border-radius: 12px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+</style>
+<style id="preview-only">
+  /* Solo para ver este archivo en el navegador. NO copiar al spec. */
+  body {
+    font-family: Outfit, sans-serif;
+    background: #f4f5f6;
+    padding: 48px 32px;
+    min-height: 100vh;
+  }
+  .page-title { font-weight: 700; font-size: 22px; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .page-meta { font-size: 14px; color: #666; margin-bottom: 32px; }
+  .strip { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; }
+</style>
+</head>
+<body>
+  <h1 class="page-title">Reflexión · Diary</h1>
+  <p class="page-meta">Hoja de cuaderno con renglones · entradas tipo diario · íntimo · Contenido de ejemplo, placeholders {{HANDLE}} y {{SIGNATURE}} los reemplaza el script</p>
+  <div class="strip">
+
+    <article class="slide">
+      <div class="top">
+        <div class="left"><span class="swatch"></span>Diario</div>
+        <span>1 / 5</span>
+      </div>
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="date">Sábado · 12 de septiembre</span>
+          <span class="entry-num">Entrada · 01</span>
+        </div>
+        <div class="entry">
+          <h2 class="entry-large">El talento no <em>alcanza.</em><br>La constancia <strong>sí.</strong></h2>
+          <div class="signature">{{SIGNATURE}}</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span>
+        <span class="pages">1 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <div class="left"><span class="swatch"></span>Pensando en voz alta</div>
+        <span>2 / 5</span>
+      </div>
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="date">Sábado · 12 de septiembre</span>
+          <span class="entry-num">Entrada · 02</span>
+        </div>
+        <div class="entry">
+          <h3 class="entry-title">Lo que veo en los que llegan.</h3>
+          <p class="entry-text">No son los más brillantes de la sala. Son los que <em>siguen apareciendo</em> cuando ya no hay aplausos. Diez años después, <strong>el brillante se cansó y el constante sigue ahí.</strong></p>
+          <div class="signature">{{SIGNATURE}}</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span>
+        <span class="pages">2 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <div class="left"><span class="swatch"></span>Pero también</div>
+        <span>3 / 5</span>
+      </div>
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="date">Sábado · 12 de septiembre</span>
+          <span class="entry-num">Entrada · 03</span>
+        </div>
+        <div class="entry">
+          <h3 class="entry-title">La constancia sin dirección.</h3>
+          <p class="entry-text">Insistir en lo equivocado también es constancia. Por eso hace falta <em>revisar el rumbo</em> cada tanto. Constancia con brújula. No con anteojeras.</p>
+          <div class="signature">{{SIGNATURE}}</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span>
+        <span class="pages">3 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <div class="left"><span class="swatch"></span>Lo que cuesta</div>
+        <span>4 / 5</span>
+      </div>
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="date">Sábado · 12 de septiembre</span>
+          <span class="entry-num">Entrada · 04</span>
+        </div>
+        <div class="entry">
+          <h2 class="entry-large">Nadie aplaude el martes.</h2>
+          <p class="entry-text" style="margin-top: 32px;">El aplauso llega el día del resultado. <strong>El trabajo se hizo los martes,</strong> cuando nadie miraba. Eso es lo que <em>se elige.</em></p>
+          <div class="signature">{{SIGNATURE}}</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span>
+        <span class="pages">4 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <div class="left"><span class="swatch"></span>Tu turno</div>
+        <span>5 / 5</span>
+      </div>
+      <div class="paper">
+        <div class="paper-meta">
+          <span class="date">Sábado · 12 de septiembre</span>
+          <span class="entry-num">Cierre</span>
+        </div>
+        <div class="entry">
+          <h2 class="closing-text">¿Qué estás haciendo los martes?<br><em>Piénsalo, sin apuro.</em></h2>
+          <div class="closing-cta">Comenta tu respuesta</div>
+          <div class="signature">{{SIGNATURE}}</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span>
+        <span class="pages">5 / 5</span>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

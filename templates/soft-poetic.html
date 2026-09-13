@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Soft Poetic · Template de carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="slide-css">
+  /* Copiar este bloque completo como "style" del spec. */
+  :root {
+    --bg-1: var(--brand-bg, #EEF2FF);
+    --bg-2: #FFFFFF;
+    --primary: var(--brand-primary, #4F46E5);
+    --dark: var(--brand-dark, #1E1B4B);
+    --text: var(--brand-dark, #1E1B4B);
+    --text-dim: var(--brand-text-dim, #6B7280);
+    --accent: var(--brand-neon, #34D399);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .slide {
+    font-family: Outfit, sans-serif;
+    flex: 0 0 1080px;
+    width: 1080px;
+    height: 1350px;
+    background: linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 60%, var(--bg-1) 100%);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    padding: 120px 96px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent), transparent 70%);
+    border-radius: 50%;
+  }
+  .slide::after {
+    content: "";
+    position: absolute;
+    bottom: -150px; left: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--primary) 15%, transparent), transparent 70%);
+    border-radius: 50%;
+  }
+  .top, .footer, .content { position: relative; z-index: 1; }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 24px;
+  }
+  .top .swatch {
+    width: 12px; height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .verse {
+    font-size: 84px;
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    max-width: 95%;
+  }
+  .verse em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .verse .pause {
+    display: block;
+    height: 24px;
+  }
+  .verse--big {
+    font-size: 116px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .verse--big em { font-weight: 700; color: var(--primary); }
+  .divider {
+    width: 80px;
+    height: 2px;
+    background: var(--primary);
+    margin: 56px auto;
+    opacity: 0.5;
+  }
+  .meta-line {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 40px;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+  .footer .pages { color: var(--primary); font-weight: 700; }
+  .footer .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; opacity: 0.5; }
+  .signature {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.04em;
+    margin-top: 32px;
+    font-style: italic;
+  }
+  .closing-cta {
+    margin-top: 48px;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+</style>
+<style id="preview-only">
+  /* Solo para ver este archivo en el navegador. NO copiar al spec. */
+  body {
+    font-family: Outfit, sans-serif;
+    background: #f4f5f6;
+    padding: 48px 32px;
+    min-height: 100vh;
+  }
+  .page-title { font-weight: 700; font-size: 22px; color: #1a1a1a; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .page-meta { font-size: 14px; color: #666; margin-bottom: 32px; }
+  .strip { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 32px; }
+</style>
+</head>
+<body>
+  <h1 class="page-title">Reflexión · Soft Poetic</h1>
+  <p class="page-meta">Gradient suave · centrado · una frase por slide · zen · Contenido de ejemplo, placeholders {{HANDLE}} y {{SIGNATURE}} los reemplaza el script</p>
+  <div class="strip">
+
+    <article class="slide">
+      <div class="top"><span class="swatch"></span>Reflexión</div>
+      <div class="content">
+        <p class="verse--big">El talento<br>no <em>alcanza.</em><span class="pause"></span>La constancia <em>sí.</em></p>
+        <div class="signature">{{SIGNATURE}}</div>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span><span class="dot"></span><span class="pages">1 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top"><span class="swatch"></span>Los que llegan</div>
+      <div class="content">
+        <p class="verse">No son los más brillantes.<span class="pause"></span>Son los que <em>siguen apareciendo</em><br>cuando ya no hay aplausos.</p>
+        <div class="divider"></div>
+        <p class="meta-line">02 / 05</p>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span><span class="dot"></span><span class="pages">2 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top"><span class="swatch"></span>Pero</div>
+      <div class="content">
+        <p class="verse">Insistir en lo equivocado<br>también es constancia.<span class="pause"></span>Constancia <em>con brújula.</em></p>
+        <div class="divider"></div>
+        <p class="meta-line">03 / 05</p>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span><span class="dot"></span><span class="pages">3 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top"><span class="swatch"></span>Lo que cuesta</div>
+      <div class="content">
+        <p class="verse--big">Nadie aplaude<br><em>el martes.</em><span class="pause"></span>El trabajo se hizo ahí.</p>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span><span class="dot"></span><span class="pages">4 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top"><span class="swatch"></span>Tu turno</div>
+      <div class="content">
+        <p class="verse--big">¿Qué haces<br>los <em>martes?</em></p>
+        <p class="closing-cta">Comenta · Comparte</p>
+      </div>
+      <div class="footer">
+        <span>{{HANDLE}}</span><span class="dot"></span><span class="pages">5 / 5</span>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

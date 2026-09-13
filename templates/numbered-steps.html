@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Numbered Steps · Template de carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="slide-css">
+  /* Copiar este bloque completo como "style" del spec. */
+  :root {
+    --bg: #FFFFFF;
+    --primary: var(--brand-primary, #4F46E5);
+    --dark: var(--brand-dark, #1E1B4B);
+    --text: var(--brand-text, #111827);
+    --text-dim: var(--brand-text-dim, #6B7280);
+    --pale: var(--brand-bg, #EEF2FF);
+    --rule: var(--pale);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .slide {
+    font-family: Outfit, sans-serif;
+    flex: 0 0 1080px;
+    width: 1080px;
+    height: 1350px;
+    background: var(--bg);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    padding: 96px 88px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 26px;
+    background: var(--pale);
+    color: var(--dark);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+  }
+  .pill .dot {
+    width: 12px; height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  .meta {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eyebrow {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 32px;
+  }
+  .cover-headline {
+    font-size: 132px;
+    font-weight: 800;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    color: var(--dark);
+  }
+  .cover-headline em {
+    font-style: normal;
+    color: var(--primary);
+  }
+  .cover-sub {
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-dim);
+    margin-top: 40px;
+    max-width: 90%;
+  }
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+  }
+  .step-num {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 220px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 140px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  .step-text { flex: 1; padding-top: 28px; }
+  .step-title {
+    font-size: 88px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--dark);
+  }
+  .step-desc {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-dim);
+    margin-top: 28px;
+  }
+  .quote-block {
+    background: var(--pale);
+    border-radius: 32px;
+    padding: 56px 48px;
+    margin-top: 48px;
+    border-left: 8px solid var(--primary);
+  }
+  .quote-text {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--dark);
+    font-style: italic;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 56px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .handle { color: var(--text-dim); }
+  .pages { color: var(--primary); font-weight: 700; }
+  .closing-card {
+    background: var(--dark);
+    border-radius: 40px;
+    padding: 80px 64px;
+    text-align: center;
+    color: #fff;
+  }
+  .closing-card .eyebrow { color: var(--primary); }
+  .closing-card .closing-text {
+    font-size: 88px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: #fff;
+  }
+  .closing-card .closing-text em {
+    font-style: normal;
+    color: var(--primary);
+  }
+  .closing-card .closing-sub {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.75);
+    margin-top: 28px;
+  }
+</style>
+<style id="preview-only">
+  /* Solo para ver este archivo en el navegador. NO copiar al spec. */
+  body {
+    font-family: Outfit, sans-serif;
+    background: #f4f5f6;
+    padding: 48px 32px;
+    min-height: 100vh;
+  }
+  .page-title {
+    font-weight: 700;
+    font-size: 22px;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .page-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 32px;
+  }
+  .strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+  <h1 class="page-title">Tip · Numbered Steps</h1>
+  <p class="page-meta">Fondo blanco · pasos numerados en círculo · jerarquía tipo tutorial · Contenido de ejemplo, placeholders {{HANDLE}} y {{SIGNATURE}} los reemplaza el script</p>
+  <div class="strip">
+
+    <article class="slide">
+      <div class="top">
+        <span class="pill"><span class="dot"></span>Tip · Escritura</span>
+        <span class="meta">3 min lectura</span>
+      </div>
+      <div class="content">
+        <div class="eyebrow">Para escribir mejor</div>
+        <h2 class="cover-headline">3 hábitos<br>que cambian<br><em>todo</em></h2>
+        <p class="cover-sub">Y ahorrarte horas de reescritura.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">1 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <span class="pill"><span class="dot"></span>Lo que vas a aprender</span>
+        <span class="meta">2 / 5</span>
+      </div>
+      <div class="content">
+        <div class="eyebrow">El problema</div>
+        <h2 class="cover-headline">La mayoría<br>edita mientras<br>escribe.</h2>
+        <p class="cover-sub">Y por eso nunca termina el primer borrador. Escribir y corregir son dos trabajos distintos.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">2 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <span class="pill"><span class="dot"></span>Hábito 01</span>
+        <span class="meta">3 / 5</span>
+      </div>
+      <div class="content">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h3 class="step-title">Escribe feo primero.</h3>
+            <p class="step-desc">El primer borrador no se muestra a nadie. Su único trabajo es existir.</p>
+          </div>
+        </div>
+        <div class="quote-block">
+          <p class="quote-text">Pon un temporizador de 20 minutos. Hasta que suene, la tecla de borrar no existe.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">3 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <span class="pill"><span class="dot"></span>Hábito 02</span>
+        <span class="meta">4 / 5</span>
+      </div>
+      <div class="content">
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h3 class="step-title">Léelo en voz alta.</h3>
+            <p class="step-desc">Donde te trabas al leer, se traba el lector. Ahí hay una frase para cortar.</p>
+          </div>
+        </div>
+        <div class="quote-block">
+          <p class="quote-text">Marca cada frase donde tomaste aire dos veces. Divídela en dos.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">4 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top">
+        <span class="pill"><span class="dot"></span>Tu turno</span>
+        <span class="meta">5 / 5</span>
+      </div>
+      <div class="content">
+        <div class="closing-card">
+          <div class="eyebrow">Antes de cerrar</div>
+          <h2 class="closing-text">No edites<br><em>hasta terminar.</em></h2>
+          <p class="closing-sub">El borrador perfecto es el que existe.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">5 / 5</span>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

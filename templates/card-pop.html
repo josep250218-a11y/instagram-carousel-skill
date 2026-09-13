@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Card Pop · Template de carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="slide-css">
+  /* Copiar este bloque completo como "style" del spec. */
+  :root {
+    --bg: var(--brand-bg, #EEF2FF);
+    --card: #FFFFFF;
+    --primary: var(--brand-primary, #4F46E5);
+    --dark: var(--brand-dark, #1E1B4B);
+    --text: var(--brand-text, #111827);
+    --text-dim: var(--brand-text-dim, #6B7280);
+    --accent: var(--brand-accent, #F97316);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .slide {
+    font-family: Outfit, sans-serif;
+    flex: 0 0 1080px;
+    width: 1080px;
+    height: 1350px;
+    background: var(--bg);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    padding: 88px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+  }
+  .pill .dot {
+    width: 12px; height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+  .meta {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+  .card {
+    background: var(--card);
+    border-radius: 48px;
+    padding: 80px 72px;
+    box-shadow: 0 20px 60px color-mix(in srgb, var(--dark) 8%, transparent), 0 4px 12px color-mix(in srgb, var(--dark) 4%, transparent);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eyebrow {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 28px;
+  }
+  .headline {
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--dark);
+  }
+  .subhead {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-dim);
+    margin-top: 32px;
+  }
+  .stat {
+    font-size: 220px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--primary);
+    margin-bottom: 24px;
+  }
+  .stat-label {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--dark);
+    letter-spacing: -0.025em;
+  }
+  .stat-desc {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-dim);
+    margin-top: 24px;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 48px;
+    padding: 0 16px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .handle { color: var(--text-dim); }
+  .pages { color: var(--primary); font-weight: 700; }
+  .swipe {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .cta-card {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+  }
+  .cta-card .eyebrow { color: rgba(255,255,255,0.85); }
+  .cta-card .headline { color: #fff; }
+  .cta-card .subhead { color: rgba(255,255,255,0.85); }
+</style>
+<style id="preview-only">
+  /* Solo para ver este archivo en el navegador. NO copiar al spec. */
+  body {
+    font-family: Outfit, sans-serif;
+    background: #f4f5f6;
+    padding: 48px 32px;
+    min-height: 100vh;
+  }
+  .page-title {
+    font-weight: 700;
+    font-size: 22px;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .page-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 32px;
+  }
+  .strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+  <h1 class="page-title">Noticia · Card Pop</h1>
+  <p class="page-meta">Fondo pálido · cards blancas con sombra · friendly · Contenido de ejemplo, placeholders {{HANDLE}} y {{SIGNATURE}} los reemplaza el script</p>
+  <div class="strip">
+
+    <article class="slide">
+      <div class="top-bar">
+        <span class="pill"><span class="dot"></span>Noticia</span>
+        <span class="meta">12 Sep 2026</span>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Acaban de anunciar</div>
+        <h2 class="headline">Llegó Nimbus 2.0.</h2>
+        <p class="subhead">La nueva versión del editor. Más rápido, colaborativo y con exportación en un clic.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="swipe">Desliza →</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top-bar">
+        <span class="pill"><span class="dot"></span>Resumen</span>
+        <span class="meta">2 / 5</span>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Lo importante</div>
+        <h2 class="headline">3 cosas que cambian de verdad.</h2>
+        <p class="subhead">No las métricas de marketing. Lo que vas a notar en el uso diario.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">2 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top-bar">
+        <span class="pill"><span class="dot"></span>01 · Velocidad</span>
+        <span class="meta">3 / 5</span>
+      </div>
+      <div class="card">
+        <div class="stat">3x</div>
+        <h3 class="stat-label">Más rápido al abrir.</h3>
+        <p class="stat-desc">Un archivo de 200 páginas carga en menos de un segundo. Antes tardaba tres.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">3 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top-bar">
+        <span class="pill"><span class="dot"></span>02 · Equipo</span>
+        <span class="meta">4 / 5</span>
+      </div>
+      <div class="card">
+        <div class="stat">50</div>
+        <h3 class="stat-label">Personas editando a la vez.</h3>
+        <p class="stat-desc">Cada cambio se ve en tiempo real. Sin conflictos, sin versiones duplicadas.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">4 / 5</span>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="top-bar">
+        <span class="pill"><span class="dot"></span>Tu turno</span>
+        <span class="meta">5 / 5</span>
+      </div>
+      <div class="card cta-card">
+        <div class="eyebrow">Conversemos</div>
+        <h2 class="headline">¿Lo vas a probar?</h2>
+        <p class="subhead">Cuéntame en los comentarios qué es lo primero que harías con la nueva versión.</p>
+      </div>
+      <div class="footer">
+        <span class="handle">{{HANDLE}}</span>
+        <span class="pages">5 / 5</span>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

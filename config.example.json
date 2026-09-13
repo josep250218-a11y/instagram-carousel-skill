@@ -1,0 +1,23 @@
+{
+  "handle": "@tuhandle",
+  "signature": "— Tu Nombre",
+  "language": "es",
+  "api_url": "http://localhost:3000",
+  "open_carrusel_dir": "~/open-carrusel",
+  "output_dir": "~/Carousels",
+  "after_export": "",
+  "brand": {
+    "font": "Outfit",
+    "font_mono": "JetBrains Mono",
+    "primary": "#4F46E5",
+    "dark": "#1E1B4B",
+    "bg": "#EEF2FF",
+    "bg_dark": "#0B1220",
+    "text": "#111827",
+    "text_dim": "#6B7280",
+    "text_on_dark": "#C7D2E0",
+    "accent": "#F97316",
+    "accent_yellow": "#FBBF24",
+    "neon": "#34D399"
+  }
+}
