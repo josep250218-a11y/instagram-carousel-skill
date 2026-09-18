@@ -252,7 +252,7 @@ def main() -> None:
             print(f"Aviso: caption no guardado ({e})", file=sys.stderr)
 
     # 4) Exportar ZIP
-    zip_bytes = api.call("POST", f"/api/carousels/{carousel_id}/export", raw=True)
+    zip_bytes = api.call("POST", f"/api/carousels/{carousel_id}/export", raw=True, timeout=900)
 
     # 5) Descomprimir en output_dir/slug
     slug = slugify(title)
